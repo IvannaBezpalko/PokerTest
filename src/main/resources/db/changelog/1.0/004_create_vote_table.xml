@@ -1,0 +1,29 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="004_create_vote_table_001" author="ivanna.bezpalko">
+        <comment>Create vote table</comment>
+        <createTable tableName="vote">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column  name="option"  type="varchar(100)">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="user_story_id"  type="bigint">
+                <constraints  nullable="false"/>
+            </column>
+            <column  name="member_id"  type="bigint">
+                <constraints  nullable="false"/>
+            </column>
+        </createTable>
+
+        <rollback>
+            <dropTable tableName="vote" />
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
